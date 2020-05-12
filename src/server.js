@@ -41,17 +41,14 @@ const start = () => (
 );
 
 dbConnection = () => {
+
+  // When you try to connect database please comment bellow start method
   start();
 
   // MYSQL database connection start
 
-  // con = mysql.createPool({
-  //   multipleStatements: true,
-  //   host: config.get(`${mode}.database.host`),
-  //   user: config.get(`${mode}.database.username`),
-  //   password: config.get(`${mode}.database.password`),
-  //   database: config.get(`${mode}.database.name`),
-  // });
+  // const databaseConfig = config.get(`${mode}.database`);
+  // con = mysql.createPool(databaseConfig);
 
   // con.getConnection((error) => {
   //   if (error) {

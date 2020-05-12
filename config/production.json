@@ -7,10 +7,11 @@
     "serverUrl": "",
     "serverUrlWebUrlLink": "",
     "database": {
-      "name": "",
-      "username": "",
+      "multipleStatements": true,
+      "host": "",
+      "user": "",
       "password": "",
-      "host": ""
+      "database": ""
     },
     "email": {
       "host": "",

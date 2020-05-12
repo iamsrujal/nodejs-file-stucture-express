@@ -7,10 +7,11 @@
     "serverUrl": "localhost",
     "serverUrlWebUrlLink": "localhost:4200/",
     "database": {
-      "name": "",
-      "username": "",
+      "multipleStatements": true,
+      "host": "",
+      "user": "",
       "password": "",
-      "host": ""
+      "database": ""
     },
     "email": {
       "host": "",
