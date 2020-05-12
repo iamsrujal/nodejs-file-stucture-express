@@ -1,0 +1,22 @@
+{
+  "staging": {
+    "name": "Project Name - Staging Mode",
+    "port": 4500,
+    "mode": "staging",
+    "protocol": "http",
+    "serverUrl": "",
+    "serverUrlWebUrlLink": "",
+    "database": {
+      "name": "",
+      "username": "",
+      "password": "",
+      "host": ""
+    },
+    "email": {
+      "host": "",
+      "port": "",
+      "username": "",
+      "password": ""
+    }
+  }
+}

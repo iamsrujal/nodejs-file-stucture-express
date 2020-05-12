@@ -1,0 +1,22 @@
+{
+  "production": {
+    "name": "Project Name - Production Mode",
+    "port": 4300,
+    "mode": "production",
+    "protocol": "http",
+    "serverUrl": "",
+    "serverUrlWebUrlLink": "",
+    "database": {
+      "name": "",
+      "username": "",
+      "password": "",
+      "host": ""
+    },
+    "email": {
+      "host": "",
+      "port": "",
+      "username": "",
+      "password": ""
+    }
+  }
+}

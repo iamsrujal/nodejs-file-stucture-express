@@ -1,0 +1,22 @@
+{
+  "dev": {
+    "name": "Project Name - Dev Mode",
+    "port": 4100,
+    "mode": "development",
+    "protocol": "http",
+    "serverUrl": "localhost",
+    "serverUrlWebUrlLink": "localhost:4200/",
+    "database": {
+      "name": "",
+      "username": "",
+      "password": "",
+      "host": ""
+    },
+    "email": {
+      "host": "",
+      "port": "",
+      "username": "",
+      "password": ""
+    }
+  }
+}
