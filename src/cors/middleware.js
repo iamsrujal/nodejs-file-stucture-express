@@ -13,7 +13,7 @@ function checkToken(req, res, next) {
       ignoreExpiration: true
     }, (err, decoded) => {
       if (err) {
-        return res.send(reqResponse.errorResponse("0", "Error", "118"));
+        return res.status(414).send(reqResponse.errorResponse(414));
       } else {
         if (key === 'secret') {
           decoded.isAdminUser = false;
@@ -25,7 +25,7 @@ function checkToken(req, res, next) {
       }
     });
   } else {
-    return res.send(reqResponse.errorResponse("0", "Error", "119"));
+    return res.status(415).send(reqResponse.errorResponse(415));
   }
 
 }

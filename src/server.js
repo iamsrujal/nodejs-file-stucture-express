@@ -50,50 +50,38 @@ dbConnection = () => {
   // const databaseConfig = config.get(`${mode}.database`);
   // con = mysql.createPool(databaseConfig);
 
-  // con.getConnection((error) => {
-  //   if (error) {
-  //     console.error(error);
-  //     setTimeout(dbConnection, 5000);
-  //   } else {
-  //     app.set('con', con);
-  //     start();
-  //   }
-  // });
-
-  // con.on('error', (error) => {
-  //   connection.on('error', function (err) {
-
+  // con.getConnection((err) => {
+  //   if (err) {
   //     //- The server close the connection.
   //     if (err.code === "PROTOCOL_CONNECTION_LOST") {
   //       console.error("/!\\ Cannot establish a connection with the database. /!\\ (" + err.code + ")");
-  //       connection = dbConnection();
   //     }
 
   //     //- Connection in closing
   //     else if (err.code === "PROTOCOL_ENQUEUE_AFTER_QUIT") {
   //       console.error("/!\\ Cannot establish a connection with the database. /!\\ (" + err.code + ")");
-  //       connection = dbConnection();
   //     }
 
   //     //- Fatal error : connection variable must be recreated
   //     else if (err.code === "PROTOCOL_ENQUEUE_AFTER_FATAL_ERROR") {
   //       console.error("/!\\ Cannot establish a connection with the database. /!\\ (" + err.code + ")");
-  //       connection = dbConnection();
   //     }
 
   //     //- Error because a connection is already being established
   //     else if (err.code === "PROTOCOL_ENQUEUE_HANDSHAKE_TWICE") {
   //       console.error("/!\\ Cannot establish a connection with the database. /!\\ (" + err.code + ")");
-  //       connection = dbConnection();
   //     }
 
   //     //- Anything else
   //     else {
   //       console.error("/!\\ Cannot establish a connection with the database. /!\\ (" + err.code + ")");
-  //       connection = dbConnection();
   //     }
 
-  //   });
+  //     setTimeout(dbConnection, 5000);
+  //   } else {
+  //     app.set('con', con);
+  //     start();
+  //   }
   // });
 }
 

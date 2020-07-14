@@ -1,29 +1,40 @@
 const UserController = require('../../controllers/UserProfileController');
 const reqResponse = require('../../cors/responseHandler');
+const { validationResult } = require('express-validator');
 
 module.exports = {
 	createUser: async (req, res) => {
+		const errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			return res.status(402).send(reqResponse.errorResponse(402));
+		}
 		let data = req.body;
 		let params = req.params;
 		let query = req.query;
 		try {
 			let result = await UserController.createUser(data, params, query);
-			res.send(reqResponse.sucessResponse("1", "User Created", result));
+			res.status(201).send(reqResponse.sucessResponse(201, "User Created", "User has been created successfully"));
 		} catch (error) {
-			res.send(reqResponse.errorResponse("0", "Error", "115"));
+			console.error(error);
+			res.status(502).send(reqResponse.errorResponse(502))
 		}
 	},
 
 	updateUser: (req, res) => {
+		const errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			return res.status(402).send(reqResponse.errorResponse(402));
+		}
 		let data = req.body;
 		let params = req.params;
 		let query = req.query;
 		UserController.updateUser(data, params, query)
 			.then((result) => {
-				res.send(reqResponse.sucessResponse("1", "User Updated", result));
+				res.status(201).send(reqResponse.sucessResponse(201, "User Updated", "User has been updated successfully"));
 			})
-			.catch((err) => {
-				res.send(reqResponse.errorResponse("0", "Error", "115"));
+			.catch((error) => {
+				console.error(error);
+				res.status(502).send(reqResponse.errorResponse(502));
 			})
 	}
 }
