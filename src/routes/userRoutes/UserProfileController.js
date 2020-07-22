@@ -1,4 +1,4 @@
-const UserController = require('../../controllers/UserProfileController');
+const UserProfileServices = require('../../services/UserProfileServices');
 const reqResponse = require('../../cors/responseHandler');
 const { validationResult } = require('express-validator');
 
@@ -12,7 +12,7 @@ module.exports = {
 		let params = req.params;
 		let query = req.query;
 		try {
-			let result = await UserController.createUser(data, params, query);
+			let result = await UserProfileServices.createUser(data, params, query);
 			res.status(201).send(reqResponse.sucessResponse(201, "User Created", "User has been created successfully"));
 		} catch (error) {
 			console.error(error);
@@ -28,7 +28,7 @@ module.exports = {
 		let data = req.body;
 		let params = req.params;
 		let query = req.query;
-		UserController.updateUser(data, params, query)
+		UserProfileServices.updateUser(data, params, query)
 			.then((result) => {
 				res.status(201).send(reqResponse.sucessResponse(201, "User Updated", "User has been updated successfully"));
 			})

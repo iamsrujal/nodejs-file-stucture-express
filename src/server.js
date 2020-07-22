@@ -17,7 +17,7 @@ app.use(require('express-status-monitor')());
 
 require('./routes')(app);
 const dir = path.join(__dirname, 'assets');
-app.use(express.static(dir));
+app.use('/upload', express.static(dir));
 
 app.use(haltOnTimedout);
 function haltOnTimedout(req, res, next) {
@@ -25,8 +25,8 @@ function haltOnTimedout(req, res, next) {
 }
 
 
-// var mode = env.env().mode;
-const mode = process.env.NODE_ENV;
+// mode can be access anywhre in the project
+mode = process.env.NODE_ENV;
 
 const start = () => (
   app.listen(config.get(`${mode}.port`), () => {
@@ -48,6 +48,7 @@ dbConnection = () => {
   // MYSQL database connection start
 
   // const databaseConfig = config.get(`${mode}.database`);
+  // con can be access anywhre in the project
   // con = mysql.createPool(databaseConfig);
 
   // con.getConnection((err) => {
