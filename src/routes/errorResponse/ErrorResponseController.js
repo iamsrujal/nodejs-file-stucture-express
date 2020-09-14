@@ -7,8 +7,8 @@ module.exports = {
 	},
 
 	getErrorDataByCode: (req, res) => {
-		let code = req.params;
-		let findErrorCode = getErrorStatus.ERROR_STATUS_ARRAY.find(c => c.status == code);
+		let params = req.params;
+		let findErrorCode = getErrorStatus.ERROR_STATUS_ARRAY.find(c => c.status == params.code);
 		res.send(201).send(reqResponse.sucessResponse(201, "Fetch Error Code", findErrorCode));
 	}
 }
