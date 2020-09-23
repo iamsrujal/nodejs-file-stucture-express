@@ -28,7 +28,6 @@ let sucessResponse = (status, succMessage, data) => {
 	*/
 let errorResponse = (statusCode) => {
 	return findErrorMessage(statusCode);
-	// return res.status(statusCode).send()
 }
 
 

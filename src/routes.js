@@ -1,4 +1,4 @@
-const glob = require('glob'); // eslint-disable-line import/no-unresolved
+const glob = require('glob');
 
 module.exports = (app) => {
 	glob(`${__dirname}/routes/**/*Routes.js`, {}, (er, files) => {

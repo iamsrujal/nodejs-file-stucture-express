@@ -4,7 +4,6 @@ module.exports = {
   create: () => {
     return [
       check("name", "Name is required!").not().isEmpty(),
-      // body('url', 'Mandatory Parameter Missing.').exists(),
     ]
   },
 
