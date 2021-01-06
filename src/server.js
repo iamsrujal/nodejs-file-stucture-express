@@ -2,41 +2,38 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const chalk = require('chalk');
 const cors = require('cors');
-const config = require('config');
 const app = express();
 const pack = require('../package');
 const mysql = require('mysql');
 const path = require('path');
+// if NODE_ENV value not define then dev value will be assign 
+mode = process.env.NODE_ENV || 'dev';
+// mode can be access anywhere in the project
+const config = require('config').get(mode);
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-app.use(require('express-status-monitor')());
+
+// use only when you want to see the metric related to express app
+// app.use(require('express-status-monitor')());
 
 require('./routes')(app);
 const dir = path.join(__dirname, 'assets');
 app.use('/upload', express.static(dir));
 
-app.use(haltOnTimedout);
-function haltOnTimedout(req, res, next) {
-  if (!req.timedout) next();
-}
-
-
-// mode can be access anywhre in the project
-mode = process.env.NODE_ENV;
 
 const start = () => (
-  app.listen(config.get(`${mode}.port`), () => {
-    console.log(chalk.yellow('.......................................')); //eslint-disable-line
-    console.log(chalk.green(config.get(`${mode}.name`))); //eslint-disable-line
-    console.log(chalk.green(`Port:\t\t${config.get(`${mode}.port`)}`)); //eslint-disable-line
-    console.log(chalk.green(`Mode:\t\t${config.get(`${mode}.mode`)}`)); //eslint-disable-line
-    console.log(chalk.green(`App version:\t${pack.version}`)); //eslint-disable-line
+  app.listen(config.port, () => {
+    console.log(chalk.yellow('.......................................'));
+    console.log(chalk.green(config.name));
+    console.log(chalk.green(`Port:\t\t${config.port}`));
+    console.log(chalk.green(`Mode:\t\t${config.mode}`));
+    console.log(chalk.green(`App version:\t${pack.version}`));
     console.log(chalk.green("database connection is established"));
-    console.log(chalk.yellow('.......................................')); //eslint-disable-line
+    console.log(chalk.yellow('.......................................'));
   })
 );
 
@@ -47,8 +44,8 @@ dbConnection = () => {
 
   // MYSQL database connection start
 
-  // const databaseConfig = config.get(`${mode}.database`);
-  // con can be access anywhre in the project
+  // const databaseConfig = config.database;
+  // con can be access anywhere in the project
   // con = mysql.createPool(databaseConfig);
 
   // con.getConnection((err) => {

@@ -1,22 +1,20 @@
 const nodemailer = require("nodemailer");
-const config = require('config');
+const config = require('config').get(mode);
 
 let sendMail = (to, subject, html) => {
   return new Promise((resolve, reject) => {
-    const mode = process.env.NODE_ENV || 'dev';
-
     let transporter = nodemailer.createTransport({
-      host: config.get(`${mode}.email.host`),
-      port: config.get(`${mode}.email.port`),
+      host: config.email.host,
+      port: config.email.port,
       secure: true, // true for 465, false for other ports
       auth: {
-        user: config.get(`${mode}.email.username`),
-        pass: config.get(`${mode}.email.password`)
+        user: config.email.username,
+        pass: config.email.password
       }
     });
 
     let mailOptions = {
-      from: `${mode}.email.username`,
+      from: config.email.username,
       to: to,
       subject: subject,
       html: html,

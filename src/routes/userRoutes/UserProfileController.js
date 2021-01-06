@@ -13,7 +13,7 @@ module.exports = {
 		let query = req.query;
 		try {
 			let result = await UserProfileServices.createUser(data, params, query);
-			res.status(201).send(reqResponse.sucessResponse(201, "User Created", "User has been created successfully"));
+			res.status(201).send(reqResponse.successResponse(201, "User Created", "User has been created successfully"));
 		} catch (error) {
 			console.error(error);
 			res.status(502).send(reqResponse.errorResponse(502))
@@ -30,7 +30,7 @@ module.exports = {
 		let query = req.query;
 		UserProfileServices.updateUser(data, params, query)
 			.then((result) => {
-				res.status(201).send(reqResponse.sucessResponse(201, "User Updated", "User has been updated successfully"));
+				res.status(201).send(reqResponse.successResponse(201, "User Updated", "User has been updated successfully"));
 			})
 			.catch((error) => {
 				console.error(error);

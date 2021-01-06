@@ -13,7 +13,7 @@ function findErrorMessage(status) {
 		* @param {string} succMessage - Success response message
 		* @param {any} data - Success response custom data
 	*/
-let sucessResponse = (status, succMessage, data) => {
+let successResponse = (status, succMessage, data) => {
 	return {
 		status,
 		message: succMessage,
@@ -33,5 +33,5 @@ let errorResponse = (statusCode) => {
 
 module.exports = {
 	errorResponse,
-	sucessResponse,
+	successResponse,
 };
